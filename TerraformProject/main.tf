@@ -10,7 +10,7 @@ resource "aws_instance" "my_project_instance" {
   instance_type = "t2.micro"
 
   # Specify a key pair if you need SSH access
-  key_name = "instancekey"
+  key_name = "demokey"
 
   # Security group to allow HTTP, HTTPS, and MySQL access
   vpc_security_group_ids = [aws_security_group.my_project_sg.id]
