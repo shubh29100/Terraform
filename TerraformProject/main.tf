@@ -27,7 +27,7 @@ resource "aws_instance" "my_project_instance" {
     connection {
       type        = "ssh"
       user        = "ec2-user"
-      private_key = file("C:/Users/Admin/Downloads/instancekey.pem")  #Enter path to your aws key file
+      private_key = file("C:/Users/Admin/Downloads/demokey.pem")  #Enter path to your aws key file
       host        = self.public_ip
     }
   }
