@@ -1,0 +1,19 @@
+terraform --version 
+
+terraform init 
+
+aws configure
+
+terraform plan 
+
+terraform apply 
+
+terraform apply --auto-approve 
+
+terraform fmt
+
+terraform validate
+
+terraform destroy 
+
+terraform destroy --target github_repository.terraformrepo1 
