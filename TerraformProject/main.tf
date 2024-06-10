@@ -80,9 +80,6 @@
 #     protocol    = "-1"
 #     cidr_blocks = ["0.0.0.0/0"]
 #   }
-
-
-
 provider "aws" {
   region     = "us-east-1"
   access_key = "AKIAUS4Z3N6EBNFYMS6Q"  # Enter your access key
@@ -154,7 +151,11 @@ resource "aws_instance" "my_project_instance" {
       "wget https://dlcdn.apache.org/tomcat/tomcat-8/v8.5.100/bin/apache-tomcat-8.5.100.tar.gz -P /tmp",
       "sudo mkdir -p /opt/tomcat",
       "sudo tar xf /tmp/apache-tomcat-8.5.100.tar.gz -C /opt/tomcat",
-      "sudo ln -s /opt/tomcat/apache-tomcat-8.5.100 /opt/tomcat/latest",
+      "sudo ln -sfn /opt/tomcat/apache-tomcat-8.5.100 /opt/tomcat/latest",
+      "echo 'Contents of /opt/tomcat:'",
+      "ls -l /opt/tomcat",
+      "echo 'Contents of /opt/tomcat/latest/bin:'",
+      "ls -l /opt/tomcat/latest/bin",
       "if [ -d /opt/tomcat/latest/bin ]; then sudo chmod +x /opt/tomcat/latest/bin/*.sh; fi",
       "if [ -f /opt/tomcat/latest/bin/startup.sh ]; then sudo /opt/tomcat/latest/bin/startup.sh; fi",
       "sudo systemctl start nginx",
