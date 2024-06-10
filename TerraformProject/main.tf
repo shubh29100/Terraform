@@ -80,7 +80,9 @@
 #     protocol    = "-1"
 #     cidr_blocks = ["0.0.0.0/0"]
 #   }
-# 
+
+
+
 provider "aws" {
   region     = "us-east-1"
   access_key = "AKIAUS4Z3N6EBNFYMS6Q"  # Enter your access key
@@ -148,7 +150,7 @@ resource "aws_instance" "my_project_instance" {
   provisioner "remote-exec" {
     inline = [
       "sudo yum update -y",
-      "sudo yum install -y wget",
+      "sudo yum install -y wget tar",
       "wget https://dlcdn.apache.org/tomcat/tomcat-8/v8.5.100/bin/apache-tomcat-8.5.100.tar.gz -P /tmp",
       "sudo mkdir -p /opt/tomcat",
       "sudo tar xf /tmp/apache-tomcat-8.5.100.tar.gz -C /opt/tomcat",
