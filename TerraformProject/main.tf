@@ -6,7 +6,7 @@ provider "aws" {
 }
 
 resource "aws_instance" "my_project_instance" {
-  ami           = "ami-07bdefe31ad285925"  #Enter your custom ami id
+  ami           = "ami-0bbb9d0df6ad572f4"  #Enter your custom ami id
   instance_type = "t2.micro"
 
   # Specify a key pair if you need SSH access
