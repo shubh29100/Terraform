@@ -1,16 +1,16 @@
 
 provider "aws" {
   region     = "us-east-1"
-  access_key = "AKIAUS4Z3N6EBNFYMS6Q" #Enter your access key and secret access key
+  access_key = "AKIAUS4Z3N6EBNFYMS6Q"  #Enter your access key and secret access key
   secret_key = "PUskb3BW1snWstcxk1q6bFNoX7pCrft5vbDZZpv0"
 }
 
 resource "aws_instance" "my_project_instance" {
-  ami           = "ami-0bbb9d0df6ad572f4" #Enter your custom ami id
+  ami           = "ami-07bdefe31ad285925"  #Enter your custom ami id
   instance_type = "t2.micro"
 
   # Specify a key pair if you need SSH access
-  key_name = "demokey"
+  key_name = "instancekey"
 
   # Security group to allow HTTP, HTTPS, and MySQL access
   vpc_security_group_ids = [aws_security_group.my_project_sg.id]
@@ -27,7 +27,7 @@ resource "aws_instance" "my_project_instance" {
     connection {
       type        = "ssh"
       user        = "ec2-user"
-      private_key = file("C:/Users/Admin/Downloads/demokey.pem") #Enter path to your aws key file
+      private_key = file("C:/Users/Admin/Downloads/instancekey.pem")  #Enter path to your aws key file
       host        = self.public_ip
     }
   }
@@ -78,10 +78,10 @@ resource "aws_security_group" "my_project_sg" {
     from_port   = 0
     to_port     = 0
     protocol    = "-1"
-    cidr_blocks =
-    ["0.0.0.0/0"]
+    cidr_blocks = ["0.0.0.0/0"]
   }
 }
+
 # provider "aws" {
 #   region     = "us-east-1"
 #   access_key = "AKIAUS4Z3N6EBNFYMS6Q"  # Enter your access key
