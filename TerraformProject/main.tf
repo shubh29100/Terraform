@@ -80,12 +80,11 @@
 #     protocol    = "-1"
 #     cidr_blocks = ["0.0.0.0/0"]
 #   }
-# }
-
+# 
 provider "aws" {
   region     = "us-east-1"
   access_key = "AKIAUS4Z3N6EBNFYMS6Q"  # Enter your access key
-  secret_key = "PUskb3BW1snWstcxk1q6bFNoX7pCrft5vbDZZpv0"  # Enter your secret access key
+  secret_key = "PUskb3BW1snWstcxk1q6bFNoX7pCrft5vbDZZpv0"       # Enter your secret access key
 }
 
 resource "aws_security_group" "my_project_sg" {
@@ -154,8 +153,8 @@ resource "aws_instance" "my_project_instance" {
       "sudo mkdir -p /opt/tomcat",
       "sudo tar xf /tmp/apache-tomcat-8.5.100.tar.gz -C /opt/tomcat",
       "sudo ln -s /opt/tomcat/apache-tomcat-8.5.100 /opt/tomcat/latest",
-      "sudo chmod +x /opt/tomcat/latest/bin/*.sh",
-      "sudo /opt/tomcat/latest/bin/startup.sh",
+      "if [ -d /opt/tomcat/latest/bin ]; then sudo chmod +x /opt/tomcat/latest/bin/*.sh; fi",
+      "if [ -f /opt/tomcat/latest/bin/startup.sh ]; then sudo /opt/tomcat/latest/bin/startup.sh; fi",
       "sudo systemctl start nginx",
       "sudo systemctl enable nginx"
     ]
